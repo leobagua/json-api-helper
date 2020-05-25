@@ -105,10 +105,10 @@ export default class Normalizer {
     this._type = null
     this._attributes = {}
     this._links = {}
-    this._included = {}
+    this._included = []
     this._meta = {}
     this._mappings = {}
     this._hasOne = {}
-    this._hasMany = {}
+    this._hasMany = []
   }
 }
