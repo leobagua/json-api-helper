@@ -1,0 +1,51 @@
+{
+  "name": "json-api-model",
+  "version": "1.0.0",
+  "description": "JSON API Model is a JS library that help you to serialize/deserialize data within the JSON API specification.",
+  "main": "build/index.js",
+  "author": "Leonardo da Rosa",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leobagua/json-api-model.git"
+  },
+  "homepage": "https://github.com/leobagua/json-api-model#readme",
+  "bugs": {
+    "url": "https://github.com/leobagua/json-api-model.git/issues"
+  },
+  "keywords": [
+    "api",
+    "json",
+    "parser",
+    "rails",
+    "active record",
+    "deserializer"
+  ],
+  "jest": {
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true
+  },
+  "scripts": {
+    "build": "babel src -d build",
+    "prepare": "yarn build && yarn cc",
+    "test": "jest --watch --coverage",
+    "cc": "jest --coverage"
+  },
+  "dependencies": {
+    "lodash": "^4.17.15"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/node": "^7.8.7",
+    "@babel/plugin-proposal-object-rest-spread": "^7.9.5",
+    "@babel/plugin-transform-async-to-generator": "^7.8.3",
+    "@babel/plugin-transform-runtime": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/runtime": "^7.9.2",
+    "babel-eslint": "^10.1.0",
+    "codecov": "^3.6.5",
+    "eslint": "^6.8.0",
+    "jest": "^26.0.1"
+  }
+}
