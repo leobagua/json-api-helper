@@ -7,10 +7,10 @@ export default class Model {
   }
 
   static isObject(data) {
-    return _.isObject(data)
+    return _.isPlainObject(data)
   }
 
-  static convertObjectToModel(data) {
+  static objectToModel(data) {
     let instance = new Model()
 
     Object.entries(data).forEach(([key, value]) => {
@@ -30,7 +30,7 @@ export default class Model {
       set: (instance, attribute, value) => {
         let snakeCaseAttribute = instance.constructor.snakeCase(attribute)
 
-        if(instance.constructor.isObject(value)) value = instance.constructor.convertObjectToModel(value)
+        if(instance.constructor.isObject(value)) value = instance.constructor.objectToModel(value)
 
         instance[snakeCaseAttribute] = value
 

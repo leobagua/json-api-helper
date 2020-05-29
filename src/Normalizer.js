@@ -5,6 +5,11 @@ export default class Normalizer {
   }
 
   static normalize(response) {
+
+    if (response === undefined) {
+      throw new Error('You must provide a JSON API response to normalize.')
+    }
+
     let { data, included, links, meta } = response
 
     if (this.isCollection(data)) {
@@ -19,24 +24,33 @@ export default class Normalizer {
   }
 
   static normalizeObject(object, included, links, meta) {
+    let entity = this.instance()
     let parsedAttributes = this.parseAttributes(object)
-    let relationships = parsedAttributes._relationships
-    let { hasOne, hasMany } = this.parseRelationships(relationships)
-    let self = this.instance()
+    let { hasOne, hasMany } = this.parseRelationships(parsedAttributes._relationships)
 
-    this.setAttributes(parsedAttributes, self)
-    this.setRelationships(self, hasOne, hasMany)
-    this.setIncluded(self, included)
-    this.setLinks(self, links)
-    this.setMeta(self, meta)
-    this.setMappings(self, {...hasOne, ...hasMany})
+    Object.assign(entity, parsedAttributes)
+    Object.assign(entity, { _hasOne: hasOne, _hasMany: hasMany })
+    Object.assign(entity, { _included: this.parseIncluded(included) })
+    Object.assign(entity, { _links: links || {} })
+    Object.assign(entity, { _meta: meta || {} })
+    Object.assign(entity, { _mappings: this.parseMappings({...hasOne, ...hasMany}) })
 
-    return self
+    return entity
   }
 
-  static parseAttributes({ id, type, attributes, relationships }) {
+  static parseAttributes(object) {
+    let { id, type, attributes, relationships } = object
+
+    if (id === undefined) {
+      throw new Error('No id key found. Each record must have a id key.')
+    }
+
+    if (type === undefined) {
+      throw new Error('No type key found. Each record must have a type key.')
+    }
+
     return {
-      _id: id,
+      _id: parseInt(id, 10),
       _type: type,
       ...(attributes && { _attributes: attributes }),
       ...(relationships && { _relationships: relationships }),
@@ -57,32 +71,11 @@ export default class Normalizer {
     return { hasOne, hasMany }
   }
 
-  static setAttributes(referenceObject, object) {
-    Object.entries(referenceObject).forEach(
-      ([attribute, value]) => {
-        object[attribute] = value
-      }
-    )
+  static parseIncluded(included = []) {
+    return included.map(entry => this.normalizeObject(entry))
   }
 
-  static setRelationships(object, hasOne, hasMany) {
-    object._hasOne = hasOne
-    object._hasMany = hasMany
-  }
-
-  static setIncluded(object, included = []) {
-    object._included = included.map(entry => this.normalizeObject(entry))
-  }
-
-  static setLinks(object, links) {
-    object._links = links
-  }
-
-  static setMeta(object, meta) {
-    object._meta = meta
-  }
-
-  static setMappings(object, relationships) {
+  static parseMappings(relationships = {}) {
     let mappings = {}
 
     Object.entries(relationships).forEach(([relationship, data]) => {
@@ -93,7 +86,7 @@ export default class Normalizer {
       }
     })
 
-    object._mappings = mappings
+    return mappings
   }
 
   static isCollection(data) {
