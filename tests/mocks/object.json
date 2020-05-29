@@ -1,0 +1,96 @@
+{
+  "data": {
+    "id": 1,
+    "type": "company",
+    "attributes": {
+      "name": "My Company",
+      "number_of_employers": 20
+    },
+    "relationships": {
+      "config": {
+        "data": {
+          "id": 1,
+          "type": "config"
+        }
+      },
+      "addresses": {
+        "data": [
+          {
+            "id": 1,
+            "type": "address"
+          }
+        ]
+      },
+      "stages": {
+        "data": [
+          {
+            "id": 1,
+            "type": "stage"
+          },
+          {
+            "id": 2,
+            "type": "stage"
+          },
+          {
+            "id": 3,
+            "type": "stage"
+          }
+        ]
+      }
+    }
+  },
+  "included": [
+    {
+      "id": 1,
+      "type": "address",
+      "attributes": {
+        "street": "Company street",
+        "country": "Brazil"
+      }
+    },
+    {
+      "id": 1,
+      "type": "config",
+      "attributes": {
+        "logo": "/assets/fallback/my-logo.png"
+      },
+      "relationships": {
+        "benefits": {
+          "data": [
+            {
+              "id": 1,
+              "type": "benefit"
+            },
+            {
+              "id": 2,
+              "type": "benefit"
+            }
+          ]
+        },
+        "images": {
+          "data": []
+        }
+      }
+    },
+    {
+      "id": 1,
+      "type": "benefit",
+      "attributes": {
+        "value_type": "Percentage",
+        "periodicity": "Monthly",
+        "extensible": true,
+        "value": 80.00
+      }
+    },
+    {
+      "id": 2,
+      "type": "benefit",
+      "attributes": {
+        "value_type": "Value",
+        "periodicity": "Monthly",
+        "extensible": false,
+        "value": 299.90
+      }
+    }
+  ]
+}
