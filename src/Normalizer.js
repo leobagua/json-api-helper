@@ -23,7 +23,7 @@ export default class Normalizer {
     return data.map((object) => this.normalizeObject(object, included, links, meta))
   }
 
-  static normalizeObject(object, included, links, meta) {
+  static normalizeObject(object, included, meta) {
     let entity = this.instance()
     let parsedAttributes = this.parseAttributes(object)
     let { hasOne, hasMany } = this.parseRelationships(parsedAttributes._relationships)
@@ -31,7 +31,6 @@ export default class Normalizer {
     Object.assign(entity, parsedAttributes)
     Object.assign(entity, { _hasOne: hasOne, _hasMany: hasMany })
     Object.assign(entity, { _included: this.parseIncluded(included) })
-    Object.assign(entity, { _links: links || {} })
     Object.assign(entity, { _meta: meta || {} })
     Object.assign(entity, { _mappings: this.parseMappings({...hasOne, ...hasMany}) })
 
@@ -39,7 +38,7 @@ export default class Normalizer {
   }
 
   static parseAttributes(object) {
-    let { id, type, attributes, relationships } = object
+    let { id, type, attributes, links, relationships } = object
 
     if (id === undefined) {
       throw new Error('No id key found. Each record must have a id key.')
@@ -52,6 +51,7 @@ export default class Normalizer {
     return {
       _id: parseInt(id, 10),
       _type: type,
+      ...(links && { _links: links }),
       ...(attributes && { _attributes: attributes }),
       ...(relationships && { _relationships: relationships }),
     }
