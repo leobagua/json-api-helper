@@ -1,5 +1,5 @@
 {
-  "name": "json-api-helper",
+  "name": "@leobagua/json-api-helper",
   "version": "1.0.0",
   "description": "JSON API Helper is a JS library that helps you to normalize and deserialize data within the JSON API specification.",
   "main": "build/index.js",
