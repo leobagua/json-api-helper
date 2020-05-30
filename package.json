@@ -1,17 +1,17 @@
 {
-  "name": "json-api-model",
+  "name": "json-api-helper",
   "version": "1.0.0",
-  "description": "JSON API Model is a JS library that help you to serialize/deserialize data within the JSON API specification.",
+  "description": "JSON API Helper is a JS library that helps you to normalize and deserialize data within the JSON API specification.",
   "main": "build/index.js",
   "author": "Leonardo da Rosa",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/leobagua/json-api-model.git"
+    "url": "git+https://github.com/leobagua/json-api-helper.git"
   },
-  "homepage": "https://github.com/leobagua/json-api-model#readme",
+  "homepage": "https://github.com/leobagua/json-api-helper#readme",
   "bugs": {
-    "url": "https://github.com/leobagua/json-api-model.git/issues"
+    "url": "https://github.com/leobagua/json-api-helper.git/issues"
   },
   "keywords": [
     "api",

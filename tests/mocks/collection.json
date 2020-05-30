@@ -1,49 +1,81 @@
 {
+  "meta": {
+    "page": 1,
+    "resources_per_page": 5,
+    "total_resources": 6
+  },
   "data": [
     {
-      "type": "articles",
+      "type": "author",
       "id": "1",
       "attributes": {
-        "title": "JSON:API paints my bikeshed!",
-        "body": "The shortest article. Ever.",
-        "created": "2015-05-22T14:56:29.000Z",
-        "updated": "2015-05-22T14:56:28.000Z"
+        "name": "Leonardo da Rosa",
+        "birthplace": "Brazil"
       },
       "relationships": {
-        "person": {
-          "data": {
-            "id": "42",
-            "type": "person"
-          }
+        "photos": {
+          "data": [
+            {
+              "type": "photo",
+              "id": "7"
+            },
+            {
+              "type": "photo",
+              "id": "8"
+            }
+          ]
+        },
+        "books": {
+          "data": [
+            {
+              "type": "book",
+              "id": "1"
+            },
+            {
+              "type": "book",
+              "id": "33"
+            }
+          ]
         }
       },
       "links": {
-        "self": "http://example.com/articles/1"
+        "self": "/authors/7"
       }
     }
   ],
-  "links": {
-    "self": "http://example.com/articles",
-    "next": "http://example.com/articles?page[offset]=2",
-    "last": "http://example.com/articles?page[offset]=10"
-  },
-  "meta": {
-    "totalPages": 2,
-    "authors": [
-      "Leonardo da Rosa"
-    ]
-  },
   "included": [
     {
-      "type": "person",
-      "id": "42",
+      "type": "photo",
+      "id": "7",
       "attributes": {
-        "name": "John",
-        "age": 80,
-        "gender": "male"
-      },
-      "links": {
-        "self": "http://example.com/person/42"
+        "title": "Photo 365",
+        "uri": "https:\/\/picsum.photos\/id\/378\/400\/300.jpg"
+      }
+    },
+    {
+      "type": "photo",
+      "id": "8",
+      "attributes": {
+        "title": "Photo 786",
+        "uri": "https:\/\/picsum.photos\/id\/529\/400\/300.jpg"
+      }
+    },
+    {
+      "type": "book",
+      "id": "1",
+      "attributes": {
+        "title": "O'Kon, Gorczany and Langworth",
+        "date_published": "1987-01-25",
+        "isbn": 4294967295
+      }
+    },
+    {
+      "type": "book",
+      "id": "33",
+      "attributes": {
+        "title": "Simonis, Simonis and Mills",
+        "date_published": "1982-11-30",
+        "isbn": 1304049345
       }
     }
   ]
