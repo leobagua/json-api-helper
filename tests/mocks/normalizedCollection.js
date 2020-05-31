@@ -1,6 +1,6 @@
 export default [
   {
-    "_id": 1,
+    "_id": '1',
     "_type": "author",
     "_attributes": {
       "name": "Leonardo da Rosa",
@@ -11,7 +11,7 @@ export default [
     },
     "_included": [
       {
-        "_id": 7,
+        "_id": '7',
         "_type": "photo",
         "_attributes": {
           "title": "Photo 365",
@@ -25,7 +25,7 @@ export default [
         "_hasMany": {}
       },
       {
-        "_id": 8,
+        "_id": '8',
         "_type": "photo",
         "_attributes": {
           "title": "Photo 786",
@@ -39,7 +39,7 @@ export default [
         "_hasMany": {}
       },
       {
-        "_id": 1,
+        "_id": '1',
         "_type": "book",
         "_attributes": {
           "title": "O'Kon, Gorczany and Langworth",
@@ -54,7 +54,7 @@ export default [
         "_hasMany": {}
       },
       {
-        "_id": 33,
+        "_id": '33',
         "_type": "book",
         "_attributes": {
           "title": "Simonis, Simonis and Mills",
@@ -78,7 +78,7 @@ export default [
     "_hasMany": {
       "photos": [
         {
-          "_id": 7,
+          "_id": '7',
           "_type": "photo",
           "_attributes": {},
           "_links": {},
@@ -89,7 +89,7 @@ export default [
           "_hasMany": {}
         },
         {
-          "_id": 8,
+          "_id": '8',
           "_type": "photo",
           "_attributes": {},
           "_links": {},
@@ -102,7 +102,7 @@ export default [
       ],
       "books": [
         {
-          "_id": 1,
+          "_id": '1',
           "_type": "book",
           "_attributes": {},
           "_links": {},
@@ -113,7 +113,7 @@ export default [
           "_hasMany": {}
         },
         {
-          "_id": 33,
+          "_id": '33',
           "_type": "book",
           "_attributes": {},
           "_links": {},
