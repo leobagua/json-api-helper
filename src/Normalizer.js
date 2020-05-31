@@ -49,7 +49,7 @@ export default class Normalizer {
     }
 
     return {
-      _id: parseInt(id, 10),
+      _id: id,
       _type: type,
       ...(links && { _links: links }),
       ...(attributes && { _attributes: attributes }),
