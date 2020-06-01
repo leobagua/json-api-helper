@@ -1,6 +1,8 @@
-![](https://img.shields.io/apm/l/vim-mode.svg)
+# A simple solution to work with JSON API data in JS.
 
-A simple solution to work with JSON API data in JS.
+![](https://codecov.io/gh/leobagua/json-api-helper/branch/master/graph/badge.svg)
+![](https://img.shields.io/apm/l/vim-mode.svg)
+![](https://img.shields.io/npm/v/@leobagua/json-api-helper)
 
 ## Installation
 ````shell script
