@@ -1,6 +1,8 @@
-![](https://img.shields.io/apm/l/vim-mode.svg)
+# A simple solution to work with JSON API data in JS.
 
-A simple solution to work with JSON API data in JS.
+![](https://codecov.io/gh/leobagua/json-api-helper/branch/master/graph/badge.svg)
+![](https://img.shields.io/apm/l/vim-mode.svg)
+![](https://img.shields.io/npm/v/@leobagua/json-api-helper)
 
 ## Installation
 ````shell script
@@ -13,12 +15,12 @@ npm install @leobagua/json-api-helper
 
 ## Usage
 ```javascript
-import Deserializer from '@leobagua/json-api-helper'
+import { Deserializer } from '@leobagua/json-api-helper'
 
 Deserializer.deserialize(response)
 ```
 
-## Example:
+## Examples:
 
 ### Collection
 
@@ -283,4 +285,26 @@ Deserializer.deserialize(response)
     }
   ]
 }
+```
+
+### Multi-case types
+
+To prevent some tedious work with use of different types of the naming convention of the deserialized data, 
+a layer of multi-case type was added to help to get and set each parsed attribute, accordantly with the proffered
+case-type. So, you can access each object attribute with your preferred case-type:
+
+```javascript
+company = Deserializer.deserialize(response)
+
+// Getter
+company.company_name // 'My company'
+company.companyName // 'My company'
+company.CompanyName // 'My company'
+company['company-name'] // 'My company'
+
+// Setter
+company.company_name = 'My company in snake_case'
+company.companyName = 'My company in camelCase'
+company.CompanyName = 'My company in PascalCase'
+company['kebab-case'] = 'My company in kebab-case'
 ```
