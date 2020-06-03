@@ -61,10 +61,12 @@ export default class Normalizer {
     let hasOne = {}, hasMany = {}
 
     Object.entries(relationships).map(([relationship, { data }]) => {
-      if (this.isCollection(data)) {
-        hasMany[relationship] = data.map((object) => this.normalizeObject(object))
-      } else {
-        hasOne[relationship] = this.normalizeObject(data)
+      if(data) {
+        if (this.isCollection(data)) {
+          hasMany[relationship] = data.map((object) => this.normalizeObject(object))
+        } else {
+          hasOne[relationship] = this.normalizeObject(data)
+        }
       }
     })
 

@@ -211,6 +211,9 @@ export default {
           "type": "stage"
         }
       ]
-    }
+    },
+    "country": {
+      "data": null
+    },
   }
 }
