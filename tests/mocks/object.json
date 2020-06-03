@@ -36,6 +36,9 @@
             "type": "stage"
           }
         ]
+      },
+      "country": {
+        "data": null
       }
     }
   },
