@@ -10,6 +10,14 @@ describe('Normalizer', () => {
       expect(Model.snakeCase('UPPER_CASE_SNAKE_CASE')).toEqual('upper_case_snake_case')
     })
 
+    test('it must parse to snake_case starting with underscore', () => {
+      expect(Model.snakeCase('_camelCase')).toEqual('_camel_case')
+      expect(Model.snakeCase('_snake_case')).toEqual('_snake_case')
+      expect(Model.snakeCase('_kebab-case')).toEqual('_kebab_case')
+      expect(Model.snakeCase('_PascalCase')).toEqual('_pascal_case')
+      expect(Model.snakeCase('_UPPER_CASE_SNAKE_CASE')).toEqual('_upper_case_snake_case')
+    })
+
     test('it must check if its a object', () => {
       function Foo() {}
 

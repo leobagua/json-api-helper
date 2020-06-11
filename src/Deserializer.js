@@ -72,10 +72,10 @@ export default class Deserializer extends Normalizer {
       if (dataSet) {
         if (this.isCollection(data)) {
           let collection = _.compact(data.map(({_id, _type}) => dataSet.find((object) => object._id === _id)))
-          entity[relationship] = collection.map(object => this._hydrate(new Model(), object))
+          entity[relationship] = collection.map(object => this._hydrate(new Model(), { ...object, _included: included }))
         } else {
           let object = dataSet.find(({_id}) => _id === data._id)
-          entity[relationship] = this._hydrate(new Model(), object);
+          entity[relationship] = this._hydrate(new Model(), { ...object, _included: included });
         }
       }
     })

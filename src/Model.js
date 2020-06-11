@@ -3,7 +3,13 @@ import _ from 'lodash'
 export default class Model {
 
   static snakeCase(attribute) {
-    return _.snakeCase(attribute)
+    let underscore = ''
+
+    if (typeof attribute === 'string') {
+      underscore = (attribute.match(/^[_]/gm) || [])[0] || ''
+    }
+
+    return `${underscore}${_.snakeCase(attribute)}`
   }
 
   static isObject(data) {
