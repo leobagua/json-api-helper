@@ -6,7 +6,13 @@ export default [
     "author_links": {
       "self": "/authors/7"
     },
-    "author_meta": {},
+    "author_meta": {
+      "page": 1,
+      "next_page": 2,
+      "last_page": 2,
+      "resources_per_page": 5,
+      "total_resources": 6
+    },
     "photos": [
       {
         "id": "7",
