@@ -16,11 +16,11 @@ export default class Normalizer {
       return this.normalizeCollection(response)
     }
 
-    return this.normalizeObject(data, included, links, meta)
+    return this.normalizeObject(data, included, meta)
   }
 
-  static normalizeCollection({data, included, links, meta}) {
-    return data.map((object) => this.normalizeObject(object, included, links, meta))
+  static normalizeCollection({data, included, meta}) {
+    return data.map((object) => this.normalizeObject(object, included, meta))
   }
 
   static normalizeObject(object, included, meta) {
