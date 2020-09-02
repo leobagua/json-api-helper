@@ -5,6 +5,7 @@
   "main": "build/index.js",
   "author": "Leonardo da Rosa",
   "license": "MIT",
+  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/leobagua/json-api-helper.git"
